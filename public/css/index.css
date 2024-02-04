@@ -1,0 +1,147 @@
+@media screen and (max-width: 810px) {
+    header h1 {
+        display: none;
+    }
+
+    #file-drop-message {
+        display: none;
+    }
+}
+
+/* file upload form */
+
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#file {
+    display: flex;
+    flex-direction: column;
+}
+
+#file-drop {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+    border: 5px dashed black;
+    font-size: 50px;
+    user-select: none;
+    pointer-events: none;
+}
+
+#file-manual-select {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0;
+}
+
+#file-input {
+    display: none;
+}
+
+#file-manual-select label::after {
+    content: 'Select files';
+    cursor: pointer;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+#upload-form label:hover::after {
+    background: var(--secondary-color);
+}
+
+#upload-form button[type='submit'] {
+    background: gray;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    pointer-events: none;
+    margin: 10px 0;
+}
+
+#file:has(#file-input:invalid) ~ button[type='submit']::before{
+    content: '\e5a1';
+    font-family: 'FontAwesome';
+
+}
+
+#file:has(#file-input:invalid) ~ button[type='submit']::after{
+    content: 'First select files';
+}
+
+#file:has(#file-input:valid) ~ button[type='submit']::before{
+    content: '\f1d8';
+    font-family: 'FontAwesome';
+}
+
+#file:has(#file-input:valid) ~ button[type='submit'] {
+    background-color: var(--primary-color);
+    pointer-events: all;
+}
+
+#file:has(#file-input:valid) ~ button[type='submit']::after{
+    content: 'Send';
+}
+
+#upload-form button[type='submit']:hover {
+    background: var(--secondary-color) !important;
+}
+
+#file-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#file-list-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#file-list-table td {
+    padding: 0 5px;
+    text-align: center;
+}
+
+#file-list-table td.file-name {
+    text-align: left;
+}
+
+#clear-file-list-button {
+    margin-top: 10px;
+    background: var(--danger);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+#clear-file-list-button:hover {
+    background: var(--danger-hover);
+}
+
+#device-select{
+    background: none;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 10px;
+    max-width: 95vw;
+}
+
+#device-select option{
+    padding: 5px;
+    font-family: 'JosefinSans';
+}

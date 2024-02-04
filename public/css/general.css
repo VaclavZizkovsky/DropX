@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'JosefinSans';
+    src: local('JosefinSans'),
+        url(../assets/font/JosefinSans.ttf);
+}
+
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
+
+:root {
+    --font-family: 'JosefinSans';
+    --primary-color: #0174BE;
+    --secondary-color: #0C356A;
+    --terciary-color: #21BF73;
+    --warning: #FFC436;
+    --danger: #D9534F;
+    --danger-hover: #B93C31;
+    --background-color: #F0F0F0;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: var(--font-family);
+    background: var(--background-color);
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    pointer-events: none;
+}
+
+#logo {
+    max-width: 200px;
+}
+
+header h1 {
+    padding-top: 20px;
+    /* to center with the logo image */
+    margin-left: 50px;
+}
+
+*:hover {
+    transition: 0.2s;
+}
+
+button, select, option {
+    border: 0;
+    font-family: var(--font-family);
+    font-size: initial;
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+}
