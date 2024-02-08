@@ -25,9 +25,8 @@ window.onload = (e) => {
 
     document.querySelector('#clear-file-list-button').addEventListener('click', clearFiles);
 
-    document.querySelector('#add-device-option').addEventListener('click', () => {
-        window.location.href = './add-device/';
-    })
+    document.querySelector('#add-device-option').addEventListener('click', addDevice);
+    document.querySelector('#add-device-button').addEventListener('click', addDevice);
 
     displayFiles();
 }
@@ -50,7 +49,6 @@ function displayFiles() {
     let list = document.querySelector('#file-list-table tbody');
     let files = document.querySelector('#file-input').files;
     if (files.length == 0) {
-        //list.innerHTML = '<tr><td colspan="2">No selected files</td></tr>';
         document.querySelector('#file-list').style.display = 'none';
         return;
     }
@@ -92,4 +90,8 @@ function clearFiles() {
 }
 
 function addDevice() {
+    let select = document.querySelector('#device-select');
+    let firstOption = document.querySelector('#device-select option');
+    select.value = firstOption.value;
+    window.location.href = './add-device/';
 }

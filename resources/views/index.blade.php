@@ -33,7 +33,7 @@
                 <h1>Send files</h1>
                 <div id="file">
                     <div id="file-manual-select">
-                        <label for="file-input"></label>
+                        <label for="file-input"><i class="fa-solid fa-file-circle-plus"></i>&nbsp;Select files</label>
                         <input type="file" name="file" id="file-input" required multiple>
                     </div>
                     <p id="file-drop-message">or drag them on the screen</p>
@@ -66,11 +66,31 @@
         <section>
             <h1>My devices</h1>
             <p>Here is the list of all devices connected to this device.</p>
+            <button id="add-device-button">Add new device</button>
+            <table id="device-table">
+                <tr>
+                    <td>KaktusPC</td>
+                    <td><i class="fa-solid fa-computer"></i>&nbsp;Desktop</td>
+                    <td><button><i class="fa-solid fa-link-slash"></i>&nbsp;Disconnect</button></td>
+                </tr>
+                <tr>
+                    <td>Samsung Galaxy A52s</td>
+                    <td><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Mobile</td>
+                    <td><button><i class="fa-solid fa-link-slash"></i>&nbsp;Disconnect</button></td>
+                </tr>
+                <tr>
+                    <td>Windows 10 laptop</td>
+                    <td><i class="fa-solid fa-laptop"></i>&nbsp;Laptop</td>
+                    <td><button><i class="fa-solid fa-link-slash"></i>&nbsp;Disconnect</button></td>
+                </tr>
+            </table>
         </section>
 
         <section>
             <h1>File log</h1>
             <p>Here is the list of all sent and incoming files for this device.</p>
+            <table id="file-log">
+            </table>
         </section>
     </main>
 </body>

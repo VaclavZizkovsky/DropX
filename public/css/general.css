@@ -67,13 +67,28 @@ header h1 {
     transition: 0.2s;
 }
 
-button,
 select,
 option {
     border: 0;
+    border-radius: 5px;
     font-family: var(--font-family) !important;
     font-size: initial;
     cursor: pointer;
+}
+
+button {
+    border: 0;
+    border-radius: 5px;
+    font-family: var(--font-family) !important;
+    font-size: initial;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+}
+
+button:hover {
+    background: var(--secondary-color);
 }
 
 input {
@@ -86,4 +101,8 @@ input {
 
 input:focus {
     outline: none;
+}
+
+table {
+    border-collapse: collapse;
 }
