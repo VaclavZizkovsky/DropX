@@ -1,12 +1,11 @@
 @media screen and (max-width: 810px) {
-    header h1 {
-        display: none;
-    }
-
     #file-drop-message {
         display: none;
     }
 }
+
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
+
 
 /* file upload form */
 
@@ -63,40 +62,21 @@
 }
 
 #upload-form button[type='submit'] {
-    background: gray;
+    background: var(--primary-color);
     color: white;
     padding: 10px;
     border-radius: 5px;
-    pointer-events: none;
+    pointer-events: all;
     margin: 10px 0;
 }
 
-#file:has(#file-input:invalid) ~ button[type='submit']::before{
-    content: '\e5a1';
-    font-family: 'FontAwesome';
-
-}
-
-#file:has(#file-input:invalid) ~ button[type='submit']::after{
-    content: 'First select files';
-}
-
-#file:has(#file-input:valid) ~ button[type='submit']::before{
-    content: '\f1d8';
-    font-family: 'FontAwesome';
-}
-
-#file:has(#file-input:valid) ~ button[type='submit'] {
-    background-color: var(--primary-color);
-    pointer-events: all;
-}
-
-#file:has(#file-input:valid) ~ button[type='submit']::after{
-    content: 'Send';
+#file:has(#file-input:invalid)~button[type='submit'] {
+    background-color: gray;
+    pointer-events: none;
 }
 
 #upload-form button[type='submit']:hover {
-    background: var(--secondary-color) !important;
+    background: var(--secondary-color);
 }
 
 #file-list {
@@ -133,7 +113,7 @@
     background: var(--danger-hover);
 }
 
-#device-select{
+#device-select {
     background: none;
     border-radius: 5px;
     border: 1px solid black;
@@ -141,7 +121,12 @@
     max-width: 95vw;
 }
 
-#device-select option{
+#device-select option {
     padding: 5px;
-    font-family: 'JosefinSans';
+    font-family: Verdana, sans-serif;
+}
+
+#device-select option::before{
+    font-family: 'FontAwesome';
+    content: '\f00c';
 }

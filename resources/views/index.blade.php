@@ -25,39 +25,54 @@
         <img src="./assets/images/logo.png" alt="DropX logo" id="logo">
         <h1>DropX — file transfer in few clicks</h1>
     </header>
-    <form action="/" method="GET" id="upload-form" autocomplete="off">
-        @csrf
-        <h1>Send files</h1>
-        <div id="file">
-            <div id="file-manual-select">
-                <label for="file-input"></label>
-                <input type="file" name="file" id="file-input" required multiple>
-            </div>
-            <p id="file-drop-message">or drag them on the screen</p>
-            <div id="file-drop">
-                <span>Drop the files here</span>
-            </div>
-        </div>
-        <div id="device">
-            <h3>Choose a device</h3>
-            <select name="device" id="device-select">
-                <option value="1" class="fa-solid fa-computer"><i class="fa-solid fa-computer"></i>&nbsp;KaktusPC
-                </option>
-                <option value="2"><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Samsung Galaxy A52s</option>
-                <option value="3"><i class="fa-solid fa-laptop"></i>&nbsp;Windows 10 laptop</option>
-                <option value="2"><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Samsung Galaxy A52s Lorem ipsum
-                    dolor sit amet</option>
-            </select>
-        </div>
-        <button type="submit">&nbsp;</button>
-        <div id="file-list">
-            <h3>Files to send</h3>
-            <table id="file-list-table">
-                <tbody></tbody>
-            </table>
-            <button type="button" id="clear-file-list-button"><i class="fa-solid fa-xmark"></i>&nbsp;Clear list</button>
-        </div>
-    </form>
+
+    <main>
+        <section>
+            <form action="/" method="GET" id="upload-form" autocomplete="off">
+                @csrf
+                <h1>Send files</h1>
+                <div id="file">
+                    <div id="file-manual-select">
+                        <label for="file-input"></label>
+                        <input type="file" name="file" id="file-input" required multiple>
+                    </div>
+                    <p id="file-drop-message">or drag them on the screen</p>
+                    <div id="file-drop">
+                        <span>Drop the files here</span>
+                    </div>
+                </div>
+                <div id="device">
+                    <h3>Choose a device</h3>
+                    <select name="device" id="device-select">
+                        <option value="1"><i class="fa-solid fa-computer"></i>&nbsp;KaktusPC</option>
+                        <option value="2"><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Samsung Galaxy A52s
+                        </option>
+                        <option value="3"><i class="fa-solid fa-laptop"></i>&nbsp;Windows 10 laptop</option>
+                        <option id="add-device-option">Add a new device</option>
+                    </select>
+                </div>
+                <button type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>
+                <div id="file-list">
+                    <h3>Files to send</h3>
+                    <table id="file-list-table">
+                        <tbody></tbody>
+                    </table>
+                    <button type="button" id="clear-file-list-button"><i class="fa-solid fa-xmark"></i>&nbsp;Clear
+                        list</button>
+                </div>
+            </form>
+        </section>
+
+        <section>
+            <h1>My devices</h1>
+            <p>Here is the list of all devices connected to this device.</p>
+        </section>
+
+        <section>
+            <h1>File log</h1>
+            <p>Here is the list of all sent and incoming files for this device.</p>
+        </section>
+    </main>
 </body>
 
 </html>

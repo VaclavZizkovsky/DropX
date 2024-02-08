@@ -25,6 +25,10 @@ window.onload = (e) => {
 
     document.querySelector('#clear-file-list-button').addEventListener('click', clearFiles);
 
+    document.querySelector('#add-device-option').addEventListener('click', () => {
+        window.location.href = './add-device/';
+    })
+
     displayFiles();
 }
 
@@ -45,7 +49,7 @@ function fillFileInput(e) {
 function displayFiles() {
     let list = document.querySelector('#file-list-table tbody');
     let files = document.querySelector('#file-input').files;
-    if(files.length == 0){
+    if (files.length == 0) {
         //list.innerHTML = '<tr><td colspan="2">No selected files</td></tr>';
         document.querySelector('#file-list').style.display = 'none';
         return;
@@ -81,8 +85,11 @@ function displayFiles() {
     }
 }
 
-function clearFiles(){
+function clearFiles() {
     let input = document.querySelector('#file-input');
     input.files = new DataTransfer().files;
     displayFiles();
+}
+
+function addDevice() {
 }

@@ -6,6 +6,12 @@
 
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
 
+@media screen and (max-width: 810px) {
+    header h1 {
+        display: none;
+    }
+}
+
 :root {
     --font-family: 'JosefinSans';
     --primary-color: #0174BE;
@@ -28,6 +34,13 @@ body {
     height: 100vh;
     font-family: var(--font-family);
     background: var(--background-color);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 header {
@@ -54,11 +67,21 @@ header h1 {
     transition: 0.2s;
 }
 
-button, select, option {
+button,
+select,
+option {
     border: 0;
-    font-family: var(--font-family);
+    font-family: var(--font-family) !important;
     font-size: initial;
     cursor: pointer;
+}
+
+input {
+    border: 0;
+    font-family: var(--font-family) !important;
+    font-size: 17px;
+    padding: 8px;
+    border-radius: 5px;
 }
 
 input:focus {

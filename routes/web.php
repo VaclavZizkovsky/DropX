@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/add-device', function () {
+    return view('add-device');
+});
+
 Route::fallback(function () {
     return redirect('/');
 });
