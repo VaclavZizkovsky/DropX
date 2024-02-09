@@ -13,7 +13,7 @@
 }
 
 :root {
-    --font-family: 'JosefinSans';
+    --font-family: 'JosefinSans', sans-serif;
     --primary-color: #0174BE;
     --secondary-color: #0C356A;
     --terciary-color: #21BF73;

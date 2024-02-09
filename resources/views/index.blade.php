@@ -66,7 +66,7 @@
         <section>
             <h1>My devices</h1>
             <p>Here is the list of all devices connected to this device.</p>
-            <button id="add-device-button">Add new device</button>
+            <button id="add-device-button"><i class="fa-solid fa-plus"></i>&nbsp;Add new device</button>
             <table id="device-table">
                 <tr>
                     <td>KaktusPC</td>
