@@ -14,8 +14,13 @@ class FileTransfer extends Model
         return $this->hasMany(File::class);
     }
 
-    public function device()
+    public function fromDevice()
     {
-        return $this->belongsTo(Device::class);
+        return $this->belongsTo(Device::class, 'from_device_id');
+    }
+
+    public function toDevice()
+    {
+        return $this->belongsTo(Device::class, 'to_device_id');
     }
 }

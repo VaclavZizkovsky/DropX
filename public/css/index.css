@@ -25,7 +25,7 @@
     display: none;
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.2);
@@ -89,7 +89,7 @@
 }
 
 #file-list-table td {
-    padding: 0 5px;
+    padding: 2.5px 10px;
     text-align: center;
 }
 
@@ -116,22 +116,4 @@
 
 #device-select option {
     padding: 5px;
-}
-
-#add-device-button {
-    margin-bottom: 10px;
-}
-
-#device-table td {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid black;
-}
-
-#device-table button {
-    background: var(--danger);
-}
-
-#device-table button:hover {
-    background: var(--danger-hover);
 }

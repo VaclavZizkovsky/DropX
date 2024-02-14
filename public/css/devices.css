@@ -1,0 +1,17 @@
+#add-device-button {
+    margin: 30px 0;
+}
+
+#device-table td {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid black;
+}
+
+#device-table button {
+    background: var(--danger);
+}
+
+#device-table button:hover {
+    background: var(--danger-hover);
+}

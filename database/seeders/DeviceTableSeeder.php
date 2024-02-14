@@ -15,37 +15,37 @@ class DeviceTableSeeder extends Seeder
     {
         $device1 = Device::create([
             'name' => 'Lenovo Legion Pro 5 16IRX8',
-            'type' => 'laptop',
+            'type' => 'Laptop',
             'code' => 542684,
         ]);
 
         $device2 = Device::create([
-            'name' => 'HP 24-cr0900nc Black',
-            'type' => 'desktop',
+            'name' => 'Dell Inspiron 3020',
+            'type' => 'Desktop',
             'code' => 203578,
         ]);
 
         $device3 = Device::create([
             'name' => 'MacBook Air 13 M1',
-            'type' => 'laptop',
+            'type' => 'Laptop',
             'code' => 486532,
         ]);
 
         $device4 = Device::create([
             'name' => 'Samsung Galaxy S24 Ultra',
-            'type' => 'mobile',
+            'type' => 'Mobile',
             'code' => 523684,
         ]);
 
         $device5 = Device::create([
             'name' => 'iPhone 15 Pro',
-            'type' => 'mobile',
+            'type' => 'Mobile',
             'code' => 632548,
         ]);
 
         $device6 = Device::create([
             'name' => 'Mac mini M2 2023',
-            'type' => 'desktop',
+            'type' => 'Desktop',
             'code' => 984563,
         ]);
 

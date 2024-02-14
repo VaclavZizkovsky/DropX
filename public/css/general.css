@@ -6,21 +6,15 @@
 
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
 
-@media screen and (max-width: 810px) {
-    header h1 {
-        display: none;
-    }
-}
-
 :root {
     --font-family: 'JosefinSans', sans-serif;
     --primary-color: #0174BE;
-    --secondary-color: #0C356A;
-    --terciary-color: #21BF73;
+    --secondary-color: #1150a3;
+    --terciary-color: #313131;
     --warning: #FFC436;
     --danger: #D9534F;
     --danger-hover: #B93C31;
-    --background-color: #F0F0F0;
+    --background-color: #FAFAFA;
 }
 
 *,
@@ -36,15 +30,8 @@ body {
     background: var(--background-color);
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
 header {
-    width: 100vw;
+    width: 100%;
     display: flex;
     padding: 20px;
     justify-content: center;
@@ -55,12 +42,6 @@ header {
 
 #logo {
     max-width: 200px;
-}
-
-header h1 {
-    padding-top: 20px;
-    /* to center with the logo image */
-    margin-left: 50px;
 }
 
 *:hover {

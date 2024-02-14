@@ -50,7 +50,36 @@ class Device extends Model
 
     public function fileTransfers()
     {
-        return $this->hasMany(FileTransfer::class);
+        $sent = $this->sentFileTransfers();
+        $recieved = $this->recievedFileTransfers()->toBase();
+        return $sent->union($recieved)->orderBy('created_at');
+    }
+
+    public function sentFileTransfers()
+    {
+        return $this->hasMany(FileTransfer::class, 'from_device_id');
+    }
+
+    public function recievedFileTransfers()
+    {
+        return $this->hasMany(FileTransfer::class, 'to_device_id');
+    }
+
+    public function typeIcon()
+    {
+        $iconHtml = '';
+        switch ($this->type) {
+            case 'Desktop':
+                $iconHtml = 'fa-computer';
+                break;
+            case 'Laptop':
+                $iconHtml = 'fa-laptop';
+                break;
+            case 'Mobile':
+                $iconHtml = 'fa-mobile-screen-button';
+                break;
+        }
+        return $iconHtml;
     }
 }
 

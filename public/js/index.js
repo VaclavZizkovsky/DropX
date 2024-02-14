@@ -26,7 +26,6 @@ window.onload = (e) => {
     document.querySelector('#clear-file-list-button').addEventListener('click', clearFiles);
 
     document.querySelector('#add-device-option').addEventListener('click', addDevice);
-    document.querySelector('#add-device-button').addEventListener('click', addDevice);
 
     displayFiles();
 }
@@ -57,26 +56,7 @@ function displayFiles() {
     let listLength = files.length > 5 ? 5 : files.length;
     for (let i = 0; i < listLength; i++) {
         let file = files[i];
-        let fileTypes = {
-            document: ['pdf', 'docx', 'doc', 'odt', 'pages', 'rtf', 'tex', 'txt', 'json'],
-            image: ['jpg', 'png', 'gif', 'svg', 'blend', 'bmp'],
-            zip: ['zip', '7z', 'tar.gz', 'zipx', 'rar'],
-            executable: ['apk', 'app', 'bat', 'cmd', 'com', 'exe', 'jar', 'sh', 'html', 'php'],
-        }
-        let fileExtension = file.name.split('.');
-        fileExtension = fileExtension[fileExtension.length - 1];
-        let fileType;
-
-        if (fileTypes.document.indexOf(fileExtension) != -1) {
-            fileType = 'file';
-        } else if (fileTypes.image.indexOf(fileExtension) != -1) {
-            fileType = 'image';
-        } else if (fileTypes.zip.indexOf(fileExtension) != -1) {
-            fileType = 'file-zipper'
-        } else if (fileTypes.executable.indexOf(fileExtension) != -1) {
-            fileType = 'terminal'
-        }
-        list.innerHTML += '<tr><td class="file-icon"><i class="fa-solid fa-' + fileType + '"></td><td class="file-name">' + file.name + '</td></tr>'
+        list.innerHTML += '<tr><td>' + fileIconHtml(file.name) + '</td><td class="file-name">' + file.name + '</td></tr>'
     }
     if (files.length > 5) {
         list.innerHTML += '<tr><td colspan="2">and ' + (files.length - 5) + ' more...</td></tr>';
@@ -94,4 +74,13 @@ function addDevice() {
     let firstOption = document.querySelector('#device-select option');
     select.value = firstOption.value;
     window.location.href = './add-device/';
+}
+
+function formatTransferedFiles() {
+    let transferedFiles = document.querySelectorAll('.transfered-file');
+
+    for (let i = 0; i < transferedFiles.length; i++) {
+        let transferedFile = transferedFiles[i];
+        transferedFile.innerHTML = fileIconHtml(transferedFile.innerText);
+    }
 }

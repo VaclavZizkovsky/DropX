@@ -5,7 +5,7 @@ window.onload = (e) => {
 
 let deviceCode = 'ready';
 function showCopied() {
-    if(deviceCode != 'ready'){
+    if (deviceCode != 'ready') {
         return;
     }
 

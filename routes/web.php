@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Device;
+use App\Models\FileTransfer;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', [
+        'device' => Device::find(1),
+    ]);
+});
+
+Route::get('/devices', function () {
+    return view('devices', [
+        'device' => Device::find(1),
+    ]);
+});
+
+Route::get('/log', function () {
+    return view('log', [
+        'device' => Device::find(1),
+    ]);
 });
 
 Route::get('/add-device', function () {
