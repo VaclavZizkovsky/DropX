@@ -18,19 +18,11 @@ form {
 }
 
 #device-code-input {
-    border: 2px solid var(--primary-color);
-    margin: 1px;
     padding: 10px;
     text-align: center;
     width: 150px;
     font-size: 30px;
     font-weight: 600;
-    transition: 0s;
-}
-
-#device-code-input:focus {
-    border: 3px solid var(--primary-color);
-    margin: 0;
 }
 
 button[type='submit'] {

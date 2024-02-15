@@ -73,17 +73,31 @@ button:hover {
 }
 
 input {
-    border: 0;
     font-family: var(--font-family) !important;
     font-size: 17px;
     padding: 8px;
     border-radius: 5px;
+    border: 2px solid var(--primary-color);
+    margin: 1px;
+    transition: 0s !important;
 }
 
 input:focus {
     outline: none;
+    border: 3px solid var(--primary-color);
+    margin: 0;
 }
 
 table {
     border-collapse: collapse;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color)
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
 }

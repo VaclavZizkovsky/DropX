@@ -25,7 +25,7 @@
         <div id="device">
             <h3>Choose a device</h3>
             <select name="device" id="device-select">
-                @foreach ($device->devices() as $connectedDevice)
+                @foreach (auth()->user()->devices() as $connectedDevice)
                 <option value="{{$connectedDevice->id}}">&nbsp;{{$connectedDevice->name}}</option>
                 @endforeach
                 <option id="add-device-option">Add a new device</option>

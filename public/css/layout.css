@@ -61,6 +61,8 @@ nav a {
 
 nav a:hover {
     margin-bottom: 0;
+    text-decoration: none;
+    color: white;
     transition: 0s !important;
 }
 
@@ -89,6 +91,7 @@ main {
     overflow-y: auto;
     overflow-x: hidden;
     min-height: 100vh;
+    scroll-behavior: smooth;
 }
 
 article {

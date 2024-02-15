@@ -14,8 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('type');
+            $table->string('type')->default('desktop');
             $table->unsignedBigInteger('code')->unique();
+            $table->string('remember_token', 100)->nullable();
         });
     }
 
