@@ -12,8 +12,9 @@
 <article id="devices">
     <p>Here is the list of all devices connected to this device.</p>
     <button id="add-device-button"><i class="fa-solid fa-plus"></i>&nbsp;Add new device</button>
+    @if(count(auth()->user()->devices()) > 0)
     <table id="device-table">
-        @foreach ($device->devices() as $connectedDevice)
+        @foreach (auth()->user()->devices() as $connectedDevice)
         <tr>
             <td>{{$connectedDevice->name}}</td>
             <td><i class="fa-solid {{$connectedDevice->typeIcon()}}"></i>&nbsp;{{$connectedDevice->type}}</td>
@@ -21,5 +22,8 @@
         </tr>
         @endforeach
     </table>
+    @else
+    <p>No device connected. Connect any device to send files to them</p>
+    @endif
 </article>
 @endsection

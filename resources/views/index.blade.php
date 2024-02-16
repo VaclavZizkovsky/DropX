@@ -24,12 +24,16 @@
         </div>
         <div id="device">
             <h3>Choose a device</h3>
+            @if(count(auth()->user()->devices()) > 0)
             <select name="device" id="device-select">
                 @foreach (auth()->user()->devices() as $connectedDevice)
                 <option value="{{$connectedDevice->id}}">&nbsp;{{$connectedDevice->name}}</option>
                 @endforeach
                 <option id="add-device-option">Add a new device</option>
             </select>
+            @else
+            <button type="button" id="add-device-button"><i class="fa-solid fa-plus"></i>&nbsp;Add new device</button>
+            @endif
         </div>
         <button type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>
         <div id="file-list">

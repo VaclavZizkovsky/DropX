@@ -10,9 +10,9 @@
 
 @section('main')
 <article id="log">
-    <p>Here is the list of all sent and incoming files for this device.</p>
+    <p>There are all sent and incoming files for this device on this page.</p>
     <section id="file-log">
-        @foreach ($device->fileTransfers as $filetransfer)
+        @foreach (auth()->user()->fileTransfers as $filetransfer)
         <div class="file-transfer">
             <div class="file-transfer-head">
                 @if($filetransfer->fromDevice->name == $device->name)

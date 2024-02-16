@@ -117,3 +117,7 @@
 #device-select option {
     padding: 5px;
 }
+
+#add-device-button{
+    margin-bottom: 20px;
+}

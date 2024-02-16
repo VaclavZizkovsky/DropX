@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DeviceController;
 use App\Models\Device;
 use App\Models\FileTransfer;
 use Illuminate\Support\Facades\Route;
@@ -29,15 +30,11 @@ Route::get('/logout', [AuthController::class, 'logout']); //! FOR DEBUG ONLY
 
 
 Route::get('/devices', function () {
-    return view('devices', [
-        'device' => Device::find(1),
-    ]);
+    return view('devices');
 })->middleware('auth');
 
 Route::get('/log', function () {
-    return view('log', [
-        'device' => Device::find(1),
-    ]);
+    return view('log');
 })->middleware('auth');
 
 Route::get('/add-device', function () {
