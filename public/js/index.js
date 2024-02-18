@@ -81,7 +81,7 @@ function addDevice() {
         select.value = firstOption.value;
     }
 
-    window.location.href = './add-device/';
+    window.location.href = '/devices';
 }
 
 function formatTransferedFiles() {

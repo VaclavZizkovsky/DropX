@@ -27,7 +27,7 @@ class Device extends Authenticatable
 
     public function devices()
     {
-        return $this->deviceOneTwo()->get()->merge($this->deviceTwoOne()->get())->unique('id');
+        return $this->deviceOneTwo()->wherePivot('state', 'connected')->get()->merge($this->deviceTwoOne()->wherePivot('state', 'connected')->get())->unique('id');
     }
 
     public function attach(Device $device)
@@ -36,7 +36,7 @@ class Device extends Authenticatable
             return;
         }
 
-        $this->deviceOneTwo()->attach($device->getKey());
+        $this->deviceOneTwo()->attach($device->getKey(), ['state' => 'pending']);
     }
 
     public function detach(Device $device)
@@ -46,6 +46,25 @@ class Device extends Authenticatable
             $this->deviceOneTwo()->detach($device->getKey());
             $this->deviceTwoOne()->detach($device->getKey());
         }
+    }
+
+    public function updateConnectionStatus(Device $device, string $status)
+    {
+        $pendingConnection = $this->pendingConnections()->where('id', $device->id)->first();
+        if ($pendingConnection->count() > 0) {
+            $this->deviceTwoOne()->updateExistingPivot($device->id, ['state' => $status]);
+        }
+        return false;
+    }
+
+    public function pendingConnections()
+    {
+        return $this->deviceTwoOne()->wherePivot('state', 'pending')->get();
+    }
+
+    public function cancelledConnections()
+    {
+        return $this->deviceOneTwo()->wherePivot('state', 'cancelled')->get()->merge($this->deviceTwoOne()->wherePivot('state', 'cancelled')->get())->unique('id');
     }
 
     public function fileTransfers()

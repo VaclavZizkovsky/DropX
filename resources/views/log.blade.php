@@ -12,6 +12,7 @@
 <article id="log">
     <p>There are all sent and incoming files for this device on this page.</p>
     <section id="file-log">
+        @if(count(auth()->user()->fileTransfers) > 0)
         @foreach (auth()->user()->fileTransfers as $filetransfer)
         <div class="file-transfer">
             <div class="file-transfer-head">
@@ -35,6 +36,9 @@
             </div>
         </div>
         @endforeach
+        @else
+        <p>You haven't sent or recieved any files from other devices. <a href="/">Send some files!</a></p>
+        @endif
     </section>
 </article>
 @endsection

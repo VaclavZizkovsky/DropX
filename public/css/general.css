@@ -87,3 +87,15 @@ a:hover {
     color: var(--secondary-color);
     text-decoration: underline;
 }
+
+.error-message {
+    padding: 10px;
+    color: white;
+    background: var(--danger);
+}
+
+.error-message::before {
+    font-family: 'FontAwesome';
+    content: '\f071';
+    margin-right: 8px;
+}

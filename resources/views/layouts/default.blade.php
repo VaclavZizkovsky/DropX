@@ -21,9 +21,9 @@
 <body>
     <nav>
         <ul>
-            <li><a href="{{url('/')}}">Send file</a></li>
+            <li><a href="{{url('/')}}">Send</a></li>
+            <li><a href="{{url('/log')}}">Incoming</a></li>
             <li><a href="{{url('/devices')}}">Devices</a></li>
-            <li><a href="{{url('/log')}}">File log</a></li>
         </ul>
     </nav>
 

@@ -17,13 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get(
-    '/', /*function () {
-return view('index', [
-'device' => Device::find(1),
-]);
-}*/ [AuthController::class, 'auth']
-);
+Route::get('/', [AuthController::class, 'auth']);
 
 Route::post('/create-device', [AuthController::class, 'createDevice']);
 Route::get('/logout', [AuthController::class, 'logout']); //! FOR DEBUG ONLY
@@ -37,9 +31,10 @@ Route::get('/log', function () {
     return view('log');
 })->middleware('auth');
 
-Route::get('/add-device', function () {
-    return view('add-device');
-})->middleware('auth');
+Route::post('/add-device', [DeviceController::class, 'connectionRequest']);
+Route::put('/accept-connection/{fromDevice}', [DeviceController::class, 'acceptRequest']);
+Route::delete('/decline-connection/{fromDevice}', [DeviceController::class, 'declineRequest']);
+Route::delete('/delete-connection/{fromDevice}', [DeviceController::class, 'disconnect']);
 
 Route::fallback(function () {
     return redirect('/');

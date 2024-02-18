@@ -43,6 +43,7 @@ header {
     align-items: center;
     user-select: none;
     pointer-events: none;
+    text-align: center;
 }
 
 nav {
