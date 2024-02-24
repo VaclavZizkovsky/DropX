@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="./assets/favicon/site.webmanifest">
-    <script src="{{url('/js/general.js')}}"></script>
+    <script src="{{url('/js/general.js')}}" defer></script>
     @yield('head')
 </head>
 
@@ -39,6 +39,17 @@
         </footer>
     </main>
 
+    <section class="modal">
+        <div class="modal-content">
+            <span class="modal-text">
+                This modal shouldn't appear with this text. 
+                Please contact <a href="mailto:vaclav.zizkovsky@gmail.com">vaclav.zizkovsky@gmail.com</a> to report this issue.
+            </span>
+            <div class="modal-buttons">
+
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>

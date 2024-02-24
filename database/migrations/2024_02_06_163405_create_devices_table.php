@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('type')->default('desktop');
             $table->unsignedBigInteger('code')->unique();
+            $table->string('state')->default('ok');
             $table->string('remember_token', 100)->nullable();
         });
     }

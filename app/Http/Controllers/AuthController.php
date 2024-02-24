@@ -52,4 +52,10 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function deleteDevice(Request $request)
+    {
+        auth()->user()->delete();
+        return redirect('/');
+    }
 }

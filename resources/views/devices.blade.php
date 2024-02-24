@@ -16,7 +16,7 @@
         <div class="action-buttons">
             <form action="/accept-connection/{{$pendingDevice->id}}" method="post">
                 @csrf
-                @method('PUT')
+                @method('put')
                 <button class="accept-request"><i class="fa-solid fa-check"></i>&nbsp;Accept</button>
             </form>
             <form action="/decline-connection/{{$pendingDevice->id}}" method="post">
@@ -73,10 +73,9 @@
         @foreach (auth()->user()->cancelledConnections() as $request)
         <td>From {{$request->name}}</td>
         <td>
-            <!-- <button class="accept-request"><i class="fa-solid fa-check"></i>&nbsp;Accept</button> -->
             <form action="/accept-connection/{{$request->id}}" method="post">
                 @csrf
-                @method('PUT')
+                @method('put')
                 <button class="accept-request"><i class="fa-solid fa-check"></i>&nbsp;Accept</button>
             </form>
         </td>
@@ -84,7 +83,9 @@
     </table>
     @endif
     <h3>Delete device</h3>
-    <form action="/delete-device" id="delete-device-form">
+    <form action="/delete-device" method="post" id="delete-device-form">
+        @csrf
+        @method('delete')
         <button type="submit" id="delete-device-button"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete this
             device</button>
     </form>

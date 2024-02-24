@@ -70,6 +70,17 @@
         </footer>
     </main>
 
+    <section class="modal">
+        <div class="modal-content">
+            <span class="modal-text">
+                This modal shouldn't appear with this text. 
+                Please contact <a href="mailto:vaclav.zizkovsky@gmail.com">vaclav.zizkovsky@gmail.com</a> to report this issue.
+            </span>
+            <div class="modal-buttons">
+
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
