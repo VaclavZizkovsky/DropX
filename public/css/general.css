@@ -15,6 +15,7 @@
     --danger: #D9534F;
     --danger-hover: #B93C31;
     --background-color: #FAFAFA;
+    --success: #1a9e00;
 }
 
 *,
@@ -98,4 +99,10 @@ a:hover {
     font-family: 'FontAwesome';
     content: '\f071';
     margin-right: 8px;
+}
+
+.success-message {
+    padding: 10px;
+    color: white;
+    background: var(--success);
 }

@@ -27,7 +27,7 @@
             <h1>DropX — file transfer in few clicks</h1>
         </header>
         <article id="introduction">
-            <form action="/create-device/" method="post" id="register-device-form" autocomplete="off">
+            <form action="/create-device" method="post" id="register-device-form" autocomplete="off">
                 @csrf
                 <input type="text" name="name" id="device-name-input" placeholder="Device name" pattern="^\S.*$"
                     required>

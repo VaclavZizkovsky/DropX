@@ -16,6 +16,7 @@ class AuthController extends Controller
             'type' => ['required',],
         ]);
 
+        strip_tags($deviceValues['name']);
         if ($deviceValues['type'] != 'Mobile') {
             $deviceValues['type'] = 'Desktop';
         }

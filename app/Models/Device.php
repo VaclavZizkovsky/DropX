@@ -51,7 +51,8 @@ class Device extends Authenticatable
     public function updateConnectionStatus(Device $device, string $status)
     {
         $pendingConnection = $this->pendingConnections()->where('id', $device->id)->first();
-        if ($pendingConnection->count() > 0) {
+        $cancelledConnection = $this->cancelledConnections()->where('id', $device->id)->first();
+        if ($pendingConnection != null || $cancelledConnection != null) {
             $this->deviceTwoOne()->updateExistingPivot($device->id, ['state' => $status]);
         }
         return false;

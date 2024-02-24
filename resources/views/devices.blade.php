@@ -27,13 +27,15 @@
         </div>
     </div>
     @endforeach
+    @if($errors->any())
+    <span class="error-message">{{$errors->first()}}</span>
+    @endif
+    @if(session('success'))
+    <span class="success-message">{{session('success')}}</span>
+    @endif
     <h2>Add a device</h2>
-    <p>Enter the code of the device you want to connect and then click on the button</p>
     <form action="/add-device" method="POST" id="add-device-form" autocomplete="off">
         @csrf
-        @if($errors->any())
-        <span class="error-message">{{$errors->first()}}</span>
-        @endif
         <span>Code of this device:</span>
         <span id="this-device-code">{{auth()->user()->code}}</span>
         <input type="text" name="code" placeholder="Code" id="device-code-input" pattern="[0-9]{6}" required>
@@ -41,9 +43,7 @@
     </form>
 
     <h2>Connected devices</h2>
-    <p>Here is the list of all devices connected to this device.</p>
-    <button id="add-device-button"><i class="fa-solid fa-plus"></i>&nbsp;Add new device</button>
-    @if(count(auth()->user()->devices()) > 0)
+    @if(auth()->user()->devices()->count() > 0)
     <table id="device-table">
         @foreach (auth()->user()->devices() as $connectedDevice)
         <tr>
@@ -62,5 +62,31 @@
     @else
     <p>No device connected. Connect any device to send files to them</p>
     @endif
+
+    @if(auth()->user()->cancelledConnections()->count() > 0)
+    <h3>Cancelled requests</h3>
+    <button id="show-cancelled-requests-button">
+        <i class="fa-solid fa-eye"></i>
+        <span>Show {{auth()->user()->cancelledConnections()->count()}} cancelled requests</span>
+    </button>
+    <table id="cancelled-requests-table">
+        @foreach (auth()->user()->cancelledConnections() as $request)
+        <td>From {{$request->name}}</td>
+        <td>
+            <!-- <button class="accept-request"><i class="fa-solid fa-check"></i>&nbsp;Accept</button> -->
+            <form action="/accept-connection/{{$request->id}}" method="post">
+                @csrf
+                @method('PUT')
+                <button class="accept-request"><i class="fa-solid fa-check"></i>&nbsp;Accept</button>
+            </form>
+        </td>
+        @endforeach
+    </table>
+    @endif
+    <h3>Delete device</h3>
+    <form action="/delete-device" id="delete-device-form">
+        <button type="submit" id="delete-device-button"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete this
+            device</button>
+    </form>
 </article>
 @endsection

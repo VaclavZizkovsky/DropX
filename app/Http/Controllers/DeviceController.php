@@ -37,11 +37,11 @@ class DeviceController extends Controller
 
         if ($authDevice != $deviceToConnect) {
             $authDevice->attach($deviceToConnect);
-            return redirect('/devices');
+            return back()->with('success', 'Request sent! Accept it in other device.');
         }
 
         return back()->withInput()->withErrors([
-            'code' => 'Something went wrong.',
+            'code' => 'Cannot connect same device you dumbass.',
         ]);
     }
 
@@ -49,20 +49,20 @@ class DeviceController extends Controller
     {
         $authDevice = auth()->user();
         $authDevice->updateConnectionStatus($fromDevice, 'connected');
-        return redirect('/devices');
+        return back()->with('success', 'Device successfully connected.');
     }
 
     public function declineRequest(Request $request, Device $fromDevice)
     {
         $authDevice = auth()->user();
         $authDevice->updateConnectionStatus($fromDevice, 'cancelled');
-        return redirect('/devices');
+        return back()->with('success', 'Request cancelled.');
     }
 
     public function disconnect(Request $request, Device $fromDevice)
     {
         $authDevice = auth()->user();
         $authDevice->detach($fromDevice);
-        return redirect('/devices');
+        return back()->with('success', 'Device successfully disconnected.');
     }
 }

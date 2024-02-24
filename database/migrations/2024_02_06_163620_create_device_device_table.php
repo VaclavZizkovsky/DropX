@@ -14,12 +14,14 @@ return new class extends Migration {
             $table->unsignedBigInteger('device1_id');
             $table->foreign('device1_id')
                 ->references('id')
-                ->on('devices');
+                ->on('devices')
+                ->onDelete('cascade');
 
             $table->unsignedBigInteger('device2_id');
             $table->foreign('device2_id')
                 ->references('id')
-                ->on('devices');
+                ->on('devices')
+                ->onDelete('cascade');
 
             $table->string('state')->default('pending');
         });

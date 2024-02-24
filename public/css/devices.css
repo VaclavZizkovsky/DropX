@@ -28,7 +28,6 @@
 button[type='submit'] {
     padding: 10px;
     pointer-events: all;
-    margin: 10px 0;
     width: max-content;
 }
 
@@ -87,5 +86,35 @@ button[type='submit']:hover {
 }
 
 .decline-request:hover {
+    background: var(--danger-hover);
+}
+
+#cancelled-requests-table {
+    display: none;
+    animation: rolldown 2.5s ease;
+}
+
+
+@keyframes rolldown {
+    0% {
+        height: 0;
+        opacity: -1;
+    }
+
+    100% {
+        height: 100%;
+        opacity: 1;
+    }
+}
+
+#cancelled-requests-table td {
+    padding: 10px;
+}
+
+#delete-device-button {
+    background: var(--danger);
+}
+
+#delete-device-button:hover {
     background: var(--danger-hover);
 }
