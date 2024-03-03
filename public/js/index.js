@@ -51,21 +51,39 @@ function fillFileInput(e) {
 
 function displayFiles() {
     let list = document.querySelector('#file-list-table tbody');
+    document.querySelector('#file-input').files = filterFolders(document.querySelector('#file-input').files).files;
     let files = document.querySelector('#file-input').files;
+
     if (files.length == 0) {
         document.querySelector('#file-list').style.display = 'none';
         return;
     }
     document.querySelector('#file-list').style.display = 'flex';
+
     list.innerHTML = '';
     let listLength = files.length > 5 ? 5 : files.length;
     for (let i = 0; i < listLength; i++) {
         let file = files[i];
         list.innerHTML += '<tr><td>' + fileIconHtml(file.name) + '</td><td class="file-name">' + file.name + '</td></tr>'
     }
+
     if (files.length > 5) {
         list.innerHTML += '<tr><td colspan="2">and ' + (files.length - 5) + ' more...</td></tr>';
     }
+}
+
+function filterFolders(files) {
+    let filteredFiles = new DataTransfer();
+
+    files = [...files];
+    files.forEach(file => {
+        let fileParts = file.name.split('.');
+        if (fileParts.length > 1 || file.type != '') {
+            filteredFiles.items.add(file);
+        }
+    });
+
+    return filteredFiles;
 }
 
 function clearFiles() {

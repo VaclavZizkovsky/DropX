@@ -41,7 +41,7 @@ function fileIconHtml(fileName) {
         executable: ['apk', 'app', 'bat', 'cmd', 'com', 'exe', 'jar', 'sh', 'html', 'php'],
     }
     let fileExtension = fileName.split('.');
-    fileExtension = fileExtension[fileExtension.length - 1];
+    fileExtension = fileExtension[fileExtension.length - 1].toLowerCase();
     let fileType;
 
     if (fileTypes.document.indexOf(fileExtension) != -1) {

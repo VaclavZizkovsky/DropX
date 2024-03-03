@@ -9,6 +9,12 @@ class FileTransfer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'state',
+        'from_device_id',
+        'to_device_id'
+    ];
+
     public function files()
     {
         return $this->hasMany(File::class);

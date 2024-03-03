@@ -10,17 +10,25 @@
 
 @section('main')
 <article id="upload">
-    <form action="/" method="GET" id="upload-form" autocomplete="off">
+    <form action="/upload" method="POST" id="upload-form" autocomplete="off" enctype="multipart/form-data">
         @csrf
         <div id="file">
             <div id="file-manual-select">
                 <label for="file-input"><i class="fa-solid fa-file-circle-plus"></i>&nbsp;Select files</label>
-                <input type="file" name="file" id="file-input" required multiple>
+                <input type="file" name="files[]" id="file-input" required multiple>
             </div>
             <p id="file-drop-message">or drag them on the screen</p>
             <div id="file-drop">
                 <span>Drop the files here</span>
             </div>
+        </div>
+        <div id="file-list">
+            <h3>Files to send</h3>
+            <table id="file-list-table">
+                <tbody></tbody>
+            </table>
+            <button type="button" id="clear-file-list-button"><i class="fa-solid fa-xmark"></i>&nbsp;Clear
+                list</button>
         </div>
         <div id="device">
             <h3>Choose a device</h3>
@@ -36,14 +44,7 @@
             @endif
         </div>
         <button type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>
-        <div id="file-list">
-            <h3>Files to send</h3>
-            <table id="file-list-table">
-                <tbody></tbody>
-            </table>
-            <button type="button" id="clear-file-list-button"><i class="fa-solid fa-xmark"></i>&nbsp;Clear
-                list</button>
-        </div>
+        
     </form>
 
 </article>

@@ -29,7 +29,7 @@ class DeviceController extends Controller
             ]);
         }
 
-        if ($authDevice->pendingConnections()->where('id', $deviceToConnect->id)->count() > 0 || $deviceToConnect->pendingConnections()->where('id', $authDevice->id)->count() > 0 || $deviceToConnect->cancelledConnections()->where('id', $authDevice->id)->count() > 0) {
+        if ($authDevice->getConnections('all', ['cancelled', 'connected', 'pending'])->where('id', $deviceToConnect->id)->count() > 0) {
             return back()->withInput()->withErrors([
                 'code' => 'Connection request already exists.',
             ]);

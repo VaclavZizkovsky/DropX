@@ -23,7 +23,11 @@
 
     nav a {
         font-size: 17px !important;
-        margin: 5px 0;
+        margin: 5px 0 !important;
+    }
+
+    nav a:hover::after{
+        height: 0 !important;
     }
 
     main {

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Collection;
 
 class Device extends Authenticatable
 {
@@ -50,23 +51,51 @@ class Device extends Authenticatable
 
     public function updateConnectionStatus(Device $device, string $status)
     {
-        $pendingConnection = $this->pendingConnections()->where('id', $device->id)->first();
-        $cancelledConnection = $this->cancelledConnections()->where('id', $device->id)->first();
+        $pendingConnection = $this->getConnections('all', 'pending')->where('id', $device->id)->first();
+        $cancelledConnection = $this->getConnections('to', 'cancelled')->where('id', $device->id)->first();
         if ($pendingConnection != null || $cancelledConnection != null) {
             $this->deviceTwoOne()->updateExistingPivot($device->id, ['state' => $status]);
         }
         return false;
     }
 
-    public function pendingConnections()
+    public function getConnections($type, $states)
     {
-        return $this->deviceTwoOne()->wherePivot('state', 'pending')->get();
-    }
+        if (is_string($states)) {
+            $states = [$states];
+        }
+        $connections = collect();
+        foreach ($states as $state) {
+            $statedConnections = new Collection();
+            switch ($type) {
+                case 'from':
+                    $statedConnections = $this->deviceOneTwo()->wherePivot('state', $state)->get();
+                    break;
 
-    public function cancelledConnections()
-    {
-        return $this->deviceOneTwo()->wherePivot('state', 'cancelled')->get()->merge($this->deviceTwoOne()->wherePivot('state', 'cancelled')->get())->unique('id');
+                case 'to':
+                    $statedConnections = $this->deviceTwoOne()->wherePivot('state', $state)->get();
+                    break;
+
+                case 'all':
+                    $statedConnections = $this->deviceOneTwo()->wherePivot('state', $state)->get()->merge($this->deviceTwoOne()->wherePivot('state', $state)->get())->unique('id');
+                    break;
+
+                default:
+                    break;
+            }
+            $connections = $connections->merge($statedConnections);
+        }
+        return $connections;
     }
+    // public function pendingConnections()
+    // {
+    //     return $this->deviceTwoOne()->wherePivot('state', 'pending')->get();
+    // }
+
+    // public function cancelledConnections()
+    // {
+    //     return $this->deviceOneTwo()->wherePivot('state', 'cancelled')->get()->merge($this->deviceTwoOne()->wherePivot('state', 'cancelled')->get())->unique('id');
+    // }
 
     public function fileTransfers()
     {
