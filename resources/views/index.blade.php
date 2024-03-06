@@ -37,7 +37,7 @@
                 @foreach (auth()->user()->devices() as $connectedDevice)
                 <option value="{{$connectedDevice->id}}">&nbsp;{{$connectedDevice->name}}</option>
                 @endforeach
-                <option id="add-device-option">Add a new device</option>
+                <option id="add-device-option" value="-1">Add a new device</option>
             </select>
             @else
             <button type="button" id="add-device-button"><i class="fa-solid fa-plus"></i>&nbsp;Add new device</button>

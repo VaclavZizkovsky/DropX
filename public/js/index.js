@@ -25,9 +25,13 @@ window.onload = (e) => {
 
     document.querySelector('#clear-file-list-button').addEventListener('click', clearFiles);
 
-    let option = document.querySelector('#add-device-option');
-    if (option != null) {
-        option.addEventListener('click', addDevice);
+    let select = document.querySelector('#device-select');
+    if (select != null) {
+        select.addEventListener('change', () => {
+            if (select.value == '-1') {
+                addDevice();
+            }
+        });
     } else {
         document.querySelector('#add-device-button').addEventListener('click', addDevice);
     }
