@@ -12,11 +12,11 @@
 <article id="log">
     <p>There are all sent and incoming files for this device on this page.</p>
     <section id="file-log">
-        @if(count(auth()->user()->fileTransfers) > 0)
-        @foreach (auth()->user()->fileTransfers as $filetransfer)
+        @if(auth()->user()->getTransfers('all', 'downloaded')->count() > 0)
+        @foreach (auth()->user()->getTransfers('all', 'sent') as $filetransfer)
         <div class="file-transfer">
             <div class="file-transfer-head">
-                @if($filetransfer->fromDevice->name == $device->name)
+                @if($filetransfer->fromDevice->name == auth()->user()->name)
                 <h4>
                     {{$filetransfer->files->count()}} files sent to {{$filetransfer->toDevice->name}}
                 </h4>
@@ -25,7 +25,7 @@
                     {{$filetransfer->files->count()}} files recieved from {{$filetransfer->fromDevice->name}}
                 </h4>
                 @endif
-                <span>{{$filetransfer->created_at->format('d.m.Y h:i')}}</span>
+                <span>{{$filetransfer->created_at->format('d.m.Y H:i')}}</span>
             </div>
             <div class="transfered-files-list">
                 @foreach ($filetransfer->files as $file)

@@ -87,31 +87,35 @@ class Device extends Authenticatable
         }
         return $connections;
     }
-    // public function pendingConnections()
-    // {
-    //     return $this->deviceTwoOne()->wherePivot('state', 'pending')->get();
-    // }
 
-    // public function cancelledConnections()
-    // {
-    //     return $this->deviceOneTwo()->wherePivot('state', 'cancelled')->get()->merge($this->deviceTwoOne()->wherePivot('state', 'cancelled')->get())->unique('id');
-    // }
-
-    public function fileTransfers()
+    public function getTransfers($type, $states)
     {
-        $sent = $this->sentFileTransfers();
-        $recieved = $this->recievedFileTransfers()->toBase();
-        return $sent->union($recieved)->orderBy('created_at');
-    }
+        if (is_string($states)) {
+            $states = [$states];
+        }
+        $transfers = collect();
+        foreach ($states as $state) {
+            $statedTransfers = new Collection();
+            switch ($type) {
+                case 'from':
+                    $statedTransfers = $this->hasMany(FileTransfer::class, 'from_device_id')->where('state', $state)->get();
+                    break;
 
-    public function sentFileTransfers()
-    {
-        return $this->hasMany(FileTransfer::class, 'from_device_id');
-    }
+                case 'to':
+                    $statedTransfers = $this->hasMany(FileTransfer::class, 'to_device_id')->where('state', $state)->get();
+                    break;
 
-    public function recievedFileTransfers()
-    {
-        return $this->hasMany(FileTransfer::class, 'to_device_id');
+                case 'all':
+                    $statedTransfers = $this->hasMany(FileTransfer::class, 'from_device_id')->where('state', $state)->union($this->hasMany(FileTransfer::class, 'to_device_id')->where('state', $state)->toBase())->orderBy('created_at', 'desc')->get();
+                    break;
+
+                default:
+                    break;
+            }
+
+            $transfers = $transfers->merge($statedTransfers);
+        }
+        return $transfers;
     }
 
     public function typeIcon()
