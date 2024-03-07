@@ -36,6 +36,7 @@ Route::get('/log', function () {
 Route::post('/add-device', [DeviceController::class, 'connectionRequest']);
 Route::put('/accept-connection/{fromDevice}', [DeviceController::class, 'acceptRequest']);
 Route::delete('/decline-connection/{fromDevice}', [DeviceController::class, 'declineRequest']);
+Route::delete('/cancel-connection/{toDevice}', [DeviceController::class, 'cancelRequest']);
 Route::delete('/delete-connection/{fromDevice}', [DeviceController::class, 'disconnect']);
 
 Route::post('/upload', [FileTransferController::class, 'uploadFiles'])->middleware('auth');

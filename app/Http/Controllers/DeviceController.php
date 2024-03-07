@@ -59,10 +59,19 @@ class DeviceController extends Controller
         return back()->with('success', 'Request cancelled.');
     }
 
+    public function cancelRequest(Request $request, Device $toDevice)
+    {
+        $authDevice = auth()->user();
+        if ($authDevice->getConnections('from', 'pending')->contains('id', $toDevice->id)) {
+            $authDevice->detach($toDevice, 'pending');
+            return back()->with('success', 'Connection request cancelled.');
+        }
+    }
+
     public function disconnect(Request $request, Device $fromDevice)
     {
         $authDevice = auth()->user();
-        $authDevice->detach($fromDevice);
+        $authDevice->detach($fromDevice, 'connected');
         return back()->with('success', 'Device successfully disconnected.');
     }
 }

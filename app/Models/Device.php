@@ -40,12 +40,11 @@ class Device extends Authenticatable
         $this->deviceOneTwo()->attach($device->getKey(), ['state' => 'pending']);
     }
 
-    public function detach(Device $device)
+    public function detach(Device $device, $connectionState)
     {
-        if ($this->devices()->contains('id', $device->getKey())) {
-            // Detach the relationship in both ways.
-            $this->deviceOneTwo()->detach($device->getKey());
-            $this->deviceTwoOne()->detach($device->getKey());
+        if ($this->getConnections('all', $connectionState)->contains('id', $device->id)) {
+            $this->deviceOneTwo()->detach($device->id);
+            $this->deviceTwoOne()->detach($device->id);
         }
     }
 

@@ -110,7 +110,7 @@ button[type='submit']:hover {
 
 #cancelled-requests-table {
     display: none;
-    animation: rolldown 2.5s ease;
+    animation: rolldown 2s ease;
 }
 
 
@@ -126,7 +126,8 @@ button[type='submit']:hover {
     }
 }
 
-#cancelled-requests-table td {
+#cancelled-requests-table td,
+#outcoming-requests-table td {
     padding: 10px;
 }
 

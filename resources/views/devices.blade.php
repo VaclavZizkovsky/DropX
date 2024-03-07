@@ -86,6 +86,21 @@
             @endforeach
         </table>
         @endif
+        @if(auth()->user()->getConnections('from', 'pending')->count() > 0)
+        <h3>Outcoming requests</h3>
+        <table id="outcoming-requests-table">
+            @foreach (auth()->user()->getConnections('from', 'pending') as $request)
+            <td>To  {{$request->name}}</td>
+            <td>
+                <form action="/cancel-connection/{{$request->id}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button class="decline-request"><i class="fa-solid fa-xmark"></i>&nbsp;Cancel</button>
+                </form>
+            </td>
+            @endforeach
+        </table>
+        @endif
         <h3>Delete device</h3>
         <form action="/delete-device" method="post" id="delete-device-form">
             @csrf
