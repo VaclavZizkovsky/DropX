@@ -22,8 +22,18 @@
     <nav>
         <ul>
             <li><a href="{{url('/')}}">Send</a></li>
-            <li><a href="{{url('/log')}}">Incoming</a></li>
-            <li><a href="{{url('/devices')}}">Devices</a></li>
+            <li>
+                <a href="{{url('/log')}}">Incoming</a>
+                @if(auth()->user()->getTransfers('to', 'sent')->count() > 0)
+                <span class="notification-label">{{auth()->user()->getTransfers('to', 'sent')->count()}}</span>
+                @endif
+            </li>
+            <li>
+                <a href="{{url('/devices')}}">Devices</a>
+                @if(auth()->user()->getConnections('to', 'pending')->count() > 0)
+                <span class="notification-label">{{auth()->user()->getConnections('to', 'pending')->count()}}</span>
+                @endif
+            </li>
         </ul>
     </nav>
 

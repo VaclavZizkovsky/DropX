@@ -13,7 +13,7 @@
     <p>There are all sent and incoming files for this device on this page.</p>
     <section id="file-log">
         @if(auth()->user()->getTransfers('all', 'downloaded')->count() > 0)
-        @foreach (auth()->user()->getTransfers('all', 'sent') as $filetransfer)
+        @foreach (auth()->user()->getTransfers('all', 'downloaded') as $filetransfer)
         <div class="file-transfer">
             <div class="file-transfer-head">
                 @if($filetransfer->fromDevice->name == auth()->user()->name)

@@ -26,8 +26,15 @@
         margin: 5px 0 !important;
     }
 
-    nav a:hover::after{
+    nav a:hover::after {
         height: 0 !important;
+    }
+
+    .notification-label{
+        margin-bottom: 0 !important;
+        width: 20px !important;
+        height: 20px !important;
+        font-size: 13px !important;
     }
 
     main {
@@ -69,6 +76,12 @@ nav ul {
     align-items: center;
 }
 
+nav li{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 nav a {
     display: block;
     text-decoration: none;
@@ -103,6 +116,19 @@ nav a:hover::after {
     100% {
         width: 100%;
     }
+}
+
+.notification-label{
+    color: white;
+    background: var(--secondary-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+    border-radius: 30px;
+    margin-bottom: 7.5px;
 }
 
 main {
