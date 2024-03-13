@@ -1,16 +1,5 @@
-/* article {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: start;
-    gap: 20px;
-} */
-
 article>section {
     text-align: center;
-    /* flex-basis: 0;
-    flex-grow: 1;
-    width: max-content; */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -78,7 +67,7 @@ button[type='submit']:hover {
 }
 
 .pending-request {
-    box-shadow: 0 0 5px 5px rgb(199, 199, 199);
+    box-shadow: 0 0 5px 5px rgb(200, 200, 200);
     text-align: center;
     border-radius: 5px;
     padding: 20px;

@@ -97,11 +97,11 @@ class Device extends Authenticatable
             $statedTransfers = new Collection();
             switch ($type) {
                 case 'from':
-                    $statedTransfers = $this->hasMany(FileTransfer::class, 'from_device_id')->where('state', $state)->get();
+                    $statedTransfers = $this->hasMany(FileTransfer::class, 'from_device_id')->where('state', $state)->orderBy('created_at', 'desc')->get();
                     break;
 
                 case 'to':
-                    $statedTransfers = $this->hasMany(FileTransfer::class, 'to_device_id')->where('state', $state)->get();
+                    $statedTransfers = $this->hasMany(FileTransfer::class, 'to_device_id')->where('state', $state)->orderBy('created_at', 'desc')->get();
                     break;
 
                 case 'all':

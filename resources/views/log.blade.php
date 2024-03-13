@@ -6,13 +6,45 @@
 <title>File log – DropX</title>
 @endsection
 
-@section('h1', 'File log')
+@section('h1', 'Incoming files')
 
 @section('main')
 <article id="log">
-    <p>There are all sent and incoming files for this device on this page.</p>
+    @foreach(auth()->user()->getTransfers('to', 'sent') as $filetransfer)
+    <div class="incoming-files">
+        <h4>{{$filetransfer->files->count()}} incoming files from {{$filetransfer->fromDevice->name}}</h4>
+        @if($filetransfer->files->count() > 0)
+        <div class="incoming-file-list">
+            <div class="transfered-file">
+                <span class="file-name">
+                {{$filetransfer->files->first()->name}}
+                @if($filetransfer->files->count() > 1)
+                and {{$filetransfer->files->count() - 1}} other files
+                @endif         
+                </span>
+            </div>
+        </div>
+        @endif
+        <div class="incoming-files-buttons">
+            <form action="/download/{{$filetransfer->id}}" method="post">
+                @csrf
+                <button class="download-files-button"><i class="fa-solid fa-download"></i>&nbsp;Download</button>
+            </form>
+            <form action="/decline-transfer/{{$filetransfer->id}}" method="post">
+                @csrf
+                @method('delete')
+                <button class="delete-files-button"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>
+            </form>
+        </div>
+    </div>
+    @endforeach
     <section id="file-log">
-        @if(auth()->user()->getTransfers('all', 'downloaded')->count() > 0)
+        <h2>File log</h2>
+
+        @if(auth()->user()->getTransfers('all', ['downloaded', 'sent'])->count() == 0)
+        <p>You haven't sent or recieved any files from other devices. <a href="/">Send some files!</a></p>
+        @endif
+
         @foreach (auth()->user()->getTransfers('all', 'downloaded') as $filetransfer)
         <div class="file-transfer">
             <div class="file-transfer-head">
@@ -36,9 +68,6 @@
             </div>
         </div>
         @endforeach
-        @else
-        <p>You haven't sent or recieved any files from other devices. <a href="/">Send some files!</a></p>
-        @endif
     </section>
 </article>
 @endsection
