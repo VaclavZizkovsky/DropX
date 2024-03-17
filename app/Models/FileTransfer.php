@@ -29,4 +29,11 @@ class FileTransfer extends Model
     {
         return $this->belongsTo(Device::class, 'to_device_id');
     }
+
+    public function updateState(string $state)
+    {
+        return $this->update([
+            'state' => $state
+        ]);
+    }
 }
