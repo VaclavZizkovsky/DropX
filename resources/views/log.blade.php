@@ -10,34 +10,39 @@
 
 @section('main')
 <article id="log">
-    @foreach(auth()->user()->getTransfers('to', 'sent') as $filetransfer)
-    <div class="incoming-files">
-        <h4>{{$filetransfer->files->count()}} incoming files from {{$filetransfer->fromDevice->name}}</h4>
-        @if($filetransfer->files->count() > 0)
-        <div class="incoming-file-list">
-            <div class="transfered-file">
-                <span class="file-name">
-                {{$filetransfer->files->first()->name}}
-                @if($filetransfer->files->count() > 1)
-                and {{$filetransfer->files->count() - 1}} other files
-                @endif         
-                </span>
+    @if(auth()->user()->getTransfers('to', 'sent')->count() > 0)
+    <section id="incoming-transfers">
+        @foreach(auth()->user()->getTransfers('to', 'sent') as $filetransfer)
+        <div class="incoming-files">
+            <h4>{{$filetransfer->files->count()}} incoming files from {{$filetransfer->fromDevice->name}}</h4>
+            @if($filetransfer->files->count() > 0)
+            <div class="incoming-file-list">
+                <div class="transfered-file">
+                    <span class="file-name">
+                    {{$filetransfer->files->first()->name}}
+                    @if($filetransfer->files->count() > 1)
+                    and {{$filetransfer->files->count() - 1}} other files
+                    @endif         
+                    </span>
+                </div>
+            </div>
+            @endif
+            <div class="incoming-files-buttons">
+                <form action="/download/{{$filetransfer->id}}" method="post">
+                    @csrf
+                    <button class="download-files-button"><i class="fa-solid fa-download"></i>&nbsp;Download</button>
+                </form>
+                <form action="/decline-transfer/{{$filetransfer->id}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button class="delete-files-button"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>
+                </form>
             </div>
         </div>
-        @endif
-        <div class="incoming-files-buttons">
-            <form action="/download/{{$filetransfer->id}}" method="post">
-                @csrf
-                <button class="download-files-button"><i class="fa-solid fa-download"></i>&nbsp;Download</button>
-            </form>
-            <form action="/decline-transfer/{{$filetransfer->id}}" method="post">
-                @csrf
-                @method('delete')
-                <button class="delete-files-button"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>
-            </form>
-        </div>
-    </div>
-    @endforeach
+        @endforeach
+    </section>
+    @endif
+    
     <section id="file-log">
         <h2>File log</h2>
 

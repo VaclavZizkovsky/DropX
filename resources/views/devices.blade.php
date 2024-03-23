@@ -68,46 +68,53 @@
         @endif
 
         @if(auth()->user()->getConnections('to', 'cancelled')->count() > 0)
-        <h3>Cancelled requests</h3>
-        <button id="show-cancelled-requests-button">
-            <i class="fa-solid fa-eye"></i>
-            <span>Show {{auth()->user()->getConnections('to', 'cancelled')->count()}} cancelled requests</span>
-        </button>
-        <table id="cancelled-requests-table">
-            @foreach (auth()->user()->getConnections('to', 'cancelled') as $request)
-            <td>From {{$request->name}}</td>
-            <td>
-                <form action="/accept-connection/{{$request->id}}" method="post">
-                    @csrf
-                    @method('put')
-                    <button class="accept-request"><i class="fa-solid fa-check"></i>&nbsp;Accept</button>
-                </form>
-            </td>
-            @endforeach
-        </table>
+        <section id="cancelled-requests">
+            <h3>Cancelled requests</h3>
+            <button id="show-cancelled-requests-button">
+                <i class="fa-solid fa-eye"></i>
+                <span>Show {{auth()->user()->getConnections('to', 'cancelled')->count()}} cancelled requests</span>
+            </button>
+            <table id="cancelled-requests-table">
+                @foreach (auth()->user()->getConnections('to', 'cancelled') as $request)
+                <td>From {{$request->name}}</td>
+                <td>
+                    <form action="/accept-connection/{{$request->id}}" method="post">
+                        @csrf
+                        @method('put')
+                        <button class="accept-request"><i class="fa-solid fa-check"></i>&nbsp;Accept</button>
+                    </form>
+                </td>
+                @endforeach
+            </table>
+        </section>
         @endif
         @if(auth()->user()->getConnections('from', 'pending')->count() > 0)
-        <h3>Outcoming requests</h3>
-        <table id="outcoming-requests-table">
-            @foreach (auth()->user()->getConnections('from', 'pending') as $request)
-            <td>To  {{$request->name}}</td>
-            <td>
-                <form action="/cancel-connection/{{$request->id}}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button class="decline-request"><i class="fa-solid fa-xmark"></i>&nbsp;Cancel</button>
-                </form>
-            </td>
-            @endforeach
-        </table>
+        <section id="outcoming-requests">
+            <h3>Outcoming requests</h3>
+            <table id="outcoming-requests-table">
+                @foreach (auth()->user()->getConnections('from', 'pending') as $request)
+                <td>To  {{$request->name}}</td>
+                <td>
+                    <form action="/cancel-connection/{{$request->id}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button class="decline-request"><i class="fa-solid fa-xmark"></i>&nbsp;Cancel</button>
+                    </form>
+                </td>
+                @endforeach
+            </table>
+        </section>
         @endif
-        <h3>Delete device</h3>
-        <form action="/delete-device" method="post" id="delete-device-form">
-            @csrf
-            @method('delete')
-            <button type="submit" id="delete-device-button"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete this
-                device</button>
-        </form>
+
+        <section id="delete-device">
+            <h3>Delete device</h3>
+            <form action="/delete-device" method="post" id="delete-device-form">
+                @csrf
+                @method('delete')
+                <button type="submit" id="delete-device-button"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete this
+                    device</button>
+            </form>
+        </section>
     </section>
 </article>
 @endsection

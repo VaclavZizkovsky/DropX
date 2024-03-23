@@ -49,12 +49,16 @@ body {
 header {
     width: 100%;
     display: flex;
-    padding: 20px;
+    padding: 30px;
     justify-content: center;
     align-items: center;
     user-select: none;
     pointer-events: none;
     text-align: center;
+}
+
+header h1{
+    margin: 0;
 }
 
 nav {
@@ -141,10 +145,11 @@ main {
 }
 
 article {
-    padding: 30px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
 }
 
 footer {

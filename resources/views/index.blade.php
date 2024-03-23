@@ -43,8 +43,7 @@
             <button type="button" id="add-device-button"><i class="fa-solid fa-plus"></i>&nbsp;Add new device</button>
             @endif
         </div>
-        <button type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>
-        
+        <button type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>   
     </form>
 
 </article>

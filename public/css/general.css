@@ -16,6 +16,8 @@
     --danger-hover: #B93C31;
     --background-color: #FAFAFA;
     --success: #1a9e00;
+    --primary-gap: 25px;
+    --secondary-gap: 15px;
 }
 
 *,
@@ -33,6 +35,11 @@ body {
 
 *:hover {
     transition: 0.2s;
+}
+
+h2, h3, h4{
+    margin: 0;
+    padding: 0;
 }
 
 select,

@@ -1,20 +1,28 @@
+.incoming-transfers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--secondary-gap);
+}
+
 .incoming-files{
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: var(--secondary-gap);
     box-shadow: 0 0 5px 5px rgb(200, 200, 200);
     padding: 20px;
     border-radius: 5px;
-    margin-top: 10px;
 }
 
 .incoming-files-buttons{
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     row-gap: 5px;
-    column-gap: 5px;
+    column-gap: var(--secondary-gap);
 }
 
 .delete-files-button{
@@ -26,17 +34,19 @@
 }
 
 .incoming-file-list{
-    margin-bottom: 10px;
     text-align: center;
 }
 
-#file-log h2{
-    text-align: center;
+#file-log{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--primary-gap);
 }
 
 .file-transfer {
     min-width: 40vw;
-    margin: 30px 0;
 }
 
 .file-transfer-head {
@@ -45,10 +55,6 @@
     justify-content: space-between;
     flex-wrap: wrap;
     column-gap: 50px;
-}
-
-.file-transfer-head h4 {
-    margin: 0;
 }
 
 .transfered-file {
