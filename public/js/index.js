@@ -17,7 +17,11 @@ window.onload = (e) => {
         e.preventDefault();
         document.querySelector('#file-drop').style.display = 'none';
         fillFileInput(e);
-    })
+    });
+
+    document.querySelector('#upload-form-button').addEventListener('click', (e) => {
+        uploadFiles();
+    });
 
     document.querySelector('#file-input').addEventListener('change', (e) => {
         displayFiles();
@@ -113,4 +117,42 @@ function formatTransferedFiles() {
         let transferedFile = transferedFiles[i];
         transferedFile.innerHTML = fileIconHtml(transferedFile.innerText);
     }
+}
+
+function uploadFiles() {
+    let files = document.querySelector('#file-input');
+
+    if (files.files.length == 0) {
+        return;
+    }
+
+    let request = new XMLHttpRequest();
+    request.open('POST', '/upload', true);
+
+    request.upload.onprogress = (e) => {
+        if (e.lengthComputable) {
+            document.querySelector('#progress-bar').style.width = (e.loaded / e.total) * 100 + '%';
+        }
+    };
+
+    request.onload = (e) => {
+        document.querySelector('#upload-progress').style.display = 'none';
+        clearFiles();
+        document.querySelector('.success-message').style.display = 'block';
+        document.querySelector('.success-message').innerText = 'Files successfully uploaded';
+    }
+
+    request.onerror = (e) => {
+        document.querySelector('#upload-progress').style.display = 'none';
+        clearFiles();
+        document.querySelector('.error-message').style.display = 'block';
+        document.querySelector('.error-message').innerText = 'Error uploading files';
+    }
+
+    document.querySelector('#upload-progress').style.display = 'block';
+    document.querySelector('.error-message').style.display = 'none';
+    document.querySelector('.success-message').style.display = 'none';
+
+    let formData = new FormData(document.querySelector('#upload-form'));
+    request.send(formData);
 }

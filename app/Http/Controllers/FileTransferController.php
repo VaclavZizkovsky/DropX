@@ -39,7 +39,8 @@ class FileTransferController extends Controller
                 $file->storeAs($transfer->id, $file->getClientOriginalName());
             }
         }
-        return back()->with('success', 'Files have been uploaded successfully');
+
+        return back()->with('success', 'Files uploaded successfully');
     }
 
     public function downloadFiles(Request $request, FileTransfer $fileTransfer)

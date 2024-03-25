@@ -60,17 +60,17 @@
     background: var(--secondary-color);
 }
 
-#upload-form button[type='submit'] {
+#upload-form-button {
     padding: 10px;
     pointer-events: all;
 }
 
-#file:has(#file-input:invalid)~button[type='submit'] {
+#file:has(#file-input:invalid)~#upload-form-button {
     background-color: gray;
     pointer-events: none;
 }
 
-#upload-form button[type='submit']:hover {
+#upload-form #upload-form-button:hover {
     background: var(--secondary-color);
 }
 
@@ -104,7 +104,7 @@
     background: var(--danger-hover);
 }
 
-#device{
+#device {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,4 +121,23 @@
 
 #device-select option {
     padding: 5px;
+}
+
+#upload-progress {
+    display: none;
+    width: 300px;
+    height: 20px;
+    background: var(--terciary-color);
+}
+
+#progress-bar {
+    background: var(--primary-color);
+    width: 0;
+    height: 100%;
+    transition: 0.2s;
+}
+
+.error-message,
+.success-message {
+    display: none;
 }

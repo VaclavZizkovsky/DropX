@@ -10,7 +10,13 @@
 
 @section('main')
 <article id="upload">
-    <form action="/upload" method="POST" id="upload-form" autocomplete="off" enctype="multipart/form-data">
+
+    <span class="success-message">a</span>
+    <span class="error-message">a</span>
+
+
+    <!-- action="/upload" method="POST"  -->
+    <form id="upload-form" autocomplete="off" enctype="multipart/form-data">
         @csrf
         <div id="file">
             <div id="file-manual-select">
@@ -43,7 +49,10 @@
             <button type="button" id="add-device-button"><i class="fa-solid fa-plus"></i>&nbsp;Add new device</button>
             @endif
         </div>
-        <button type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>   
+        <div id="upload-progress">
+            <div id="progress-bar"></div>
+        </div>
+        <button id='upload-form-button' type="button"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>   
     </form>
 
 </article>
