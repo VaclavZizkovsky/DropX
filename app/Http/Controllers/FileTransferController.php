@@ -50,9 +50,9 @@ class FileTransferController extends Controller
         if (auth()->user()->getTransfers('to', 'sent')->contains('id', $fileTransfer->id)) {
             if ($fileTransfer->files()->count() > 1) {
                 $zip = new \ZipArchive();
-                $zipName = 'zipdownload.zip';
-                // dd($zip->open($transferPath . $zipName, \ZipArchive::CREATE | \ZIPARCHIVE::OVERWRITE));
-                if ($zip->open('zipdownload.zip', \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === true) {
+                $zipName = 'dropx_transfer.zip';
+
+                if ($zip->open('dropx_transfer.zip', \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === true) {
                     foreach ($fileTransfer->files()->get() as $file) {
                         $fileContent = Storage::disk('local')->get($file->name);
 

@@ -50,6 +50,9 @@
         <p>You haven't sent or recieved any files from other devices. <a href="/">Send some files!</a></p>
         @endif
 
+        <div id="pagination">
+        </div>
+
         @foreach (auth()->user()->getTransfers('all', 'downloaded') as $filetransfer)
         <div class="file-transfer">
             <div class="file-transfer-head">

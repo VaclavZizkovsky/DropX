@@ -15,7 +15,6 @@
     <span class="error-message">a</span>
 
 
-    <!-- action="/upload" method="POST"  -->
     <form id="upload-form" autocomplete="off" enctype="multipart/form-data">
         @csrf
         <div id="file">

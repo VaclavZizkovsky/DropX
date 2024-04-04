@@ -1,11 +1,11 @@
-#incoming-transfers{
+#incoming-transfers {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--secondary-gap);
 }
 
-.incoming-files{
+.incoming-files {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
     border-radius: 5px;
 }
 
-.incoming-files-buttons{
+.incoming-files-buttons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -25,19 +25,19 @@
     column-gap: var(--secondary-gap);
 }
 
-.delete-files-button{
+.delete-files-button {
     background: var(--danger);
 }
 
-.delete-files-button:hover{
+.delete-files-button:hover {
     background: var(--danger-hover);
 }
 
-.incoming-file-list{
+.incoming-file-list {
     text-align: center;
 }
 
-#file-log{
+#file-log {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,17 +46,52 @@
 }
 
 .file-transfer {
+    display: none;
+    flex-direction: column;
+    row-gap: 5px;
     min-width: 40vw;
+    width: 100%;
+    max-width: 90vw;
 }
 
 .file-transfer-head {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     column-gap: 50px;
 }
 
+.file-transfer-head span {
+    color: gray;
+}
+
+.transfered-files-list {
+    display: flex;
+    flex-direction: column;
+}
+
 .transfered-file {
-    text-align: left;
+    max-width: 100vw;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+#pagination{
+    display: flex;
+    column-gap: 5px;
+}
+
+#pagination button{
+    aspect-ratio: 1 / 1;
+    height: 35px;
+}
+
+.active-page-button{
+    background: var(--terciary-color);
+}
+
+.active-page-button:hover{
+    background: var(--terciary-color);
+    cursor: initial;
 }
