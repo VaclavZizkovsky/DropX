@@ -90,6 +90,10 @@ button[type='submit']:hover {
     background: var(--danger-hover);
 }
 
+#connected-devices p{
+    margin: 0;
+}
+
 #cancelled-requests-table {
     display: none;
     animation: rolldown 2s ease;

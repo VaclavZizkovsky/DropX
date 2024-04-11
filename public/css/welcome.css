@@ -44,12 +44,12 @@ article {
     font-size: 20px;
 }
 
-#what-is-section a{
+#what-is-section a {
     color: white;
     text-decoration: underline;
 }
 
-#what-is-section a:hover{
+#what-is-section a:hover {
     text-decoration: none;
 }
 
@@ -90,6 +90,27 @@ input:invalid~button[type='submit'] {
     color: white;
 }
 
-#tutorial-section {
-    max-width: 1024px;
+#tutorial-section,
+#faq-questions {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--secondary-gap);
+}
+
+#tutorial h2,
+#faq h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+#tutorial h3,
+#faq-questions h3 {
+    font-size: 20px;
+    text-align: center;
+}
+
+#tutorial p,
+#faq-questions p{
+    font-size: 17px;
 }
