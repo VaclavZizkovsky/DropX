@@ -42,7 +42,7 @@ function fileIconHtml(fileName) {
     }
     let fileExtension = fileName.split('.');
     fileExtension = fileExtension[fileExtension.length - 1].toLowerCase();
-    let fileType;
+    let fileType = 'file';
 
     if (fileTypes.document.indexOf(fileExtension) != -1) {
         fileType = 'file';

@@ -50,7 +50,7 @@
         </footer>
     </main>
 
-    <section class="modal">
+    <dialog class="modal">
         <div class="modal-content">
             <span class="modal-text">
                 This modal shouldn't appear with this text. 
@@ -60,7 +60,7 @@
 
             </div>
         </div>
-    </section>
+</dialog>
 </body>
 
 </html>

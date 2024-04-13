@@ -28,11 +28,11 @@
             </div>
             @endif
             <div class="incoming-files-buttons">
-                <form action="/download/{{$filetransfer->id}}" method="post">
+                <form action="/download/{{$filetransfer->id}}" method="post" target="_blank" class="download-files-form">
                     @csrf
                     <button class="download-files-button"><i class="fa-solid fa-download"></i>&nbsp;Download</button>
                 </form>
-                <form action="/decline-transfer/{{$filetransfer->id}}" method="post">
+                <form action="/decline-transfer/{{$filetransfer->id}}" method="post" class="delete-files-form">
                     @csrf
                     @method('delete')
                     <button class="delete-files-button"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>

@@ -1,4 +1,12 @@
 window.addEventListener('load', (e) => {
+    document.querySelectorAll('.incoming-files').forEach(transfer => {
+        transfer.querySelectorAll('.incoming-files-buttons .download-files-form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                hideIncomingTransfer(transfer, form);
+            })
+        })
+    });
+
     loadPagination();
 });
 
@@ -47,4 +55,15 @@ function changePage(pageNumber) {
         transfer.style.display = 'none';
     });
     loadPagination();
+}
+
+var hiddenTransfers = 0;
+function hideIncomingTransfer(transfer, form) {
+    console.log(transfer);
+    transfer.style.display = 'none';
+    hiddenTransfers++;
+
+    if(document.querySelectorAll('.incoming-files').length - hiddenTransfers == 0){
+        document.querySelector('#incoming-transfers').style.display = 'none';
+    }
 }

@@ -61,6 +61,9 @@ button[type='submit']:hover {
 }
 
 .pending-request {
+    max-width: 90vw;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
     box-shadow: 0 0 5px 5px rgb(200, 200, 200);
     text-align: center;
     border-radius: 5px;
@@ -90,7 +93,7 @@ button[type='submit']:hover {
     background: var(--danger-hover);
 }
 
-#connected-devices p{
+#connected-devices p {
     margin: 0;
 }
 

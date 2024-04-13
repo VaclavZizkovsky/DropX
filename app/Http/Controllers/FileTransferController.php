@@ -50,12 +50,11 @@ class FileTransferController extends Controller
         if (auth()->user()->getTransfers('to', 'sent')->contains('id', $fileTransfer->id)) {
             if ($fileTransfer->files()->count() > 1) {
                 $zip = new \ZipArchive();
-                $zipName = 'dropx_transfer.zip';
+                $zipName = 'dropx_transfer_'.$fileTransfer->id.'.zip';
 
-                if ($zip->open('dropx_transfer.zip', \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === true) {
+                if ($zip->open('dropx_transfer_'.$fileTransfer->id.'.zip', \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === true) {
                     foreach ($fileTransfer->files()->get() as $file) {
-                        $fileContent = Storage::disk('local')->get($file->name);
-
+                        $fileContent = Storage::disk('local')->get($fileTransfer->id.'/'.$file->name);
                         $zip->addFromString(basename($file->name), $fileContent);
                     }
 
@@ -69,6 +68,8 @@ class FileTransferController extends Controller
                 return Storage::download($transferPath . $fileTransfer->files()->first()->name);
             }
         }
+
+        return back();
     }
 
     public function rejectTransfer(Request $request, FileTransfer $fileTransfer)

@@ -40,7 +40,7 @@
             @csrf
             <span>Code of this device:</span>
             <span id="this-device-code">{{auth()->user()->code}}</span>
-            <input type="text" name="code" placeholder="Code" id="device-code-input" pattern="[0-9]{6}" required>
+            <input type="text" inputmode="numeric" name="code" placeholder="Code" id="device-code-input" pattern="[0-9]{6}" required>
             <button type="submit" id="add-device-button">Connect devices</button>
         </form>
     </section>
@@ -51,8 +51,7 @@
         <table id="device-table">
             @foreach (auth()->user()->devices() as $connectedDevice)
             <tr>
-                <td>{{$connectedDevice->name}}</td>
-                <td><i class="fa-solid {{$connectedDevice->typeIcon()}}"></i>&nbsp;{{$connectedDevice->type}}</td>
+                <td><i class="fa-solid {{$connectedDevice->typeIcon()}}"></i>&nbsp;{{$connectedDevice->name}}</td>
                 <td>
                     <form action="/delete-connection/{{$connectedDevice->id}}" method="post">
                         @csrf

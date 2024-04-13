@@ -66,6 +66,10 @@ class DeviceController extends Controller
             $authDevice->detach($toDevice, 'pending');
             return back()->with('success', 'Connection request cancelled.');
         }
+
+        return back()->withInput()->withErrors([
+            'code' => 'Devices already connected.',
+        ]);
     }
 
     public function disconnect(Request $request, Device $fromDevice)
