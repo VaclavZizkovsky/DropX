@@ -22,7 +22,6 @@ Route::get('/', [AuthController::class, 'auth']);
 
 Route::post('/create-device', [AuthController::class, 'createDevice']);
 Route::delete('/delete-device', [AuthController::class, 'deleteDevice'])->middleware('auth');
-Route::get('/logout', [AuthController::class, 'logout']); //! FOR DEBUG ONLY
 
 
 Route::get('/devices', function () {
